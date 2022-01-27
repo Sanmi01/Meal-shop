@@ -7,7 +7,7 @@ export const Header = ({ onShowCart }) => {
     return (
         <>
             <header className={classes.header}>
-                <h1>ReactMeals</h1>
+                <h1>Meals Shop</h1>
                 <HeaderCartButton onShowCart={onShowCart}  />
             </header>
             <div className={classes['main-image']}>
