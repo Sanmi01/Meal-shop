@@ -37,7 +37,7 @@
   }
   
   .bump {
-    animation: bump 150ms ease-out;
+    animation: bump 350ms ease-out;
   }
   
   @keyframes bump {
@@ -46,15 +46,19 @@
     }
     10% {
       transform: scale(0.9);
+      transform: translate3d(-1px, -1px, 0);
     }
     30% {
       transform: scale(1.1);
+      transform: translate3d(1px, 1px, 0);
     }
     50% {
       transform: scale(1.15);
+      transform: translate3d(-4px, -4px, 0);
     }
     100% {
       transform: scale(1);
+      transform: translate3d(4px, 4px, 0);
     }
   }
   

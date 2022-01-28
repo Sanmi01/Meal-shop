@@ -25,12 +25,10 @@ const HeaderCartButton = ({ onShowCart }) => {
 
         const timer = setTimeout(() => {
             setBtnIsHighlighted(false);
-        }, 150);
+        }, 350);
 
         
-        return () => {
-            clearTimeout(timer);
-        };
+       
     }, [items]);
 
 
