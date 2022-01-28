@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import HeaderCartButton from './HeaderCartButton';
 import mealsImage from '../../assets/meals.jpg';
 import classes from './Header.module.css';
 
 export const Header = ({ onShowCart }) => {
+
     return (
         <>
             <header className={classes.header}>

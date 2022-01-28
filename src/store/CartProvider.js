@@ -1,9 +1,10 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useState, useEffect, useReducer } from 'react';
 import CartContext from './cart-context';
 
 const defaultCartState = {
     items: [],
-    totalAmount: 0
+    totalAmount: 0,
+    notification: false
 };
 
 const cartReducer = (state, action) => {
@@ -27,7 +28,8 @@ const cartReducer = (state, action) => {
         
         return {
             items: updatedItems,
-            totalAmount: updatedTotalAmount
+            totalAmount: updatedTotalAmount,
+            notification: state.notification
         }
     }
 
@@ -49,7 +51,8 @@ const cartReducer = (state, action) => {
 
         return {
             items: updatedItems,
-            totalAmount: updatedTotalAmount
+            totalAmount: updatedTotalAmount,
+            notification: state.notification
         }
     }
 
@@ -62,7 +65,16 @@ const cartReducer = (state, action) => {
         const updatedCartItems = state.items.filter(item => item.id !== action.id);
         return {
             items: updatedCartItems,
-            totalAmount: updatedTotalAmount
+            totalAmount: updatedTotalAmount,
+            notification: state.notification
+        }
+    }
+
+    if(action.type === 'NOTIFY') {
+        return {
+            items: state.items,
+            totalAmount: state.totalAmount,
+            notification: (!state.notification)
         }
     }
     return defaultCartState;
@@ -88,18 +100,28 @@ const CartProvider = (props) => {
         dispatchCartAction({type: 'DELETE', id:id})
     };
 
+    const NotifyFromCartHandler = () => {
+        dispatchCartAction({type: 'NOTIFY'})
+    };
+
 
     const cartContext = {
         items: cartState.items,
         totalAmount: cartState.totalAmount,
+        notification: cartState.notification,
         addItem: addItemToCartHandler,
         removeItem: removeItemFromCartHandler,
         deleteItem: deleteItemFromCartHandler
     }
 
-    useEffect(() => {
+
+     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartState))
     }, [cartState]);
+
+    useEffect(() => {
+        NotifyFromCartHandler()
+    }, [cartState.totalAmount]);
 
     return (
         <CartContext.Provider value={cartContext}>

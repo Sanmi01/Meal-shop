@@ -27,8 +27,9 @@ const HeaderCartButton = ({ onShowCart }) => {
             setBtnIsHighlighted(false);
         }, 350);
 
-        
-       
+        return () => {
+            clearTimeout(timer)
+        }
     }, [items]);
 
 

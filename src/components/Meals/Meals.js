@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useContext} from 'react';
 import MealsSummary from './MealsSummary';
 import AvailableMeals from './AvailableMeals';
+import CartContext from '../../store/cart-context';
 
 const Meals = () => {
     return (
