@@ -116,10 +116,10 @@ const CartProvider = (props) => {
     }
 
 
-    // useEffect(() => {
-    //     localStorage.setItem('cartItems', JSON.stringify(cartState))
-    //     console.log(cartState)
-    // }, [cartState]);
+    useEffect(() => {
+        localStorage.setItem('cartItems', JSON.stringify(cartState))
+        console.log(cartState)
+    }, [cartState]);
 
     return (
         <CartContext.Provider value={cartContext}>
