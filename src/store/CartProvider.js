@@ -80,6 +80,9 @@ const cartReducer = (state, action) => {
 
 // This getCartItemsFromLocalStorage get the cart items data that has been set in the local storage of the web browser and if there's none, it returns an empty array.
 const getCartItemsFromLocalStorage = () => {
+    if(!(localStorage.getItem('cartItems'))) {
+        localStorage.setItem('cartItems', JSON.stringify(defaultCartState))
+    }
     const localData = localStorage.getItem('cartItems');
     return localData ? JSON.parse(localData) : [];
 }
@@ -113,9 +116,10 @@ const CartProvider = (props) => {
     }
 
 
-     useEffect(() => {
-        localStorage.setItem('cartItems', JSON.stringify(cartState))
-    }, [cartState]);
+    // useEffect(() => {
+    //     localStorage.setItem('cartItems', JSON.stringify(cartState))
+    //     console.log(cartState)
+    // }, [cartState]);
 
     return (
         <CartContext.Provider value={cartContext}>
