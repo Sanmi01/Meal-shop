@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import CartContext from './cart-context';
 
 const defaultCartState = {
@@ -118,7 +118,6 @@ const CartProvider = (props) => {
 
     useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartState))
-        console.log(cartState)
     }, [cartState]);
 
     return (
