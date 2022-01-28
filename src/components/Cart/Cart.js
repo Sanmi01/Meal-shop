@@ -14,6 +14,10 @@ const Cart = ({ onCloseCart }) => {
         cartCtx.removeItem(id);
     };
 
+    const cartItemDeleteHandler = (id) => {
+        cartCtx.deleteItem(id);
+    }
+
     const cartItemAddHandler = (item) => {
         cartCtx.addItem({...item, amount: 1});
     };
@@ -22,7 +26,7 @@ const Cart = ({ onCloseCart }) => {
         <Modal onCloseCart={onCloseCart}>
             <ul className={classes['cart-items']}>
                 {cartItems.map((item) => (
-                    <CartItem key={item.id} name={item.name} amount={item.amount} price={item.price} onRemove={cartItemRemoveHandler.bind(null, item.id)} onAdd={cartItemAddHandler.bind(null, item)} />
+                    <CartItem key={item.id} name={item.name} amount={item.amount} price={item.price} onRemove={cartItemRemoveHandler.bind(null, item.id)} onDelete={cartItemDeleteHandler.bind(null, item.id)} onAdd={cartItemAddHandler.bind(null, item)} />
                 ))}
             </ul>
             <div className={classes.total}>
