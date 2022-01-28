@@ -1,5 +1,7 @@
 import React from "react";
 
+// CartIcon Component is just a svg for a cart
+
 const CartIcon = () => {
   return (
     <svg

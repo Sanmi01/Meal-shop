@@ -2,6 +2,8 @@ import React, { useState, useRef } from 'react';
 import Input from '../UI/Input';
 import classes from './MealItemForm.module.css';
 
+// MealItemForm Component makes use of the useState and useRef Hooks. 
+
 const MealItemForm = ({id, onAddToCart}) => {
     const [amountIsValid, setAmountIsValid] = useState(true);
     const amountInputRef = useRef();

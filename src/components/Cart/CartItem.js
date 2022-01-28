@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "./CartItem.module.css";
 
+// CartItem Component which is responsible for rendering the cart items and passing various functions to the elements 
+
 const CartItem = ({name, price, amount, onRemove, onAdd, onDelete}) => {
   const pri = `$${price.toFixed(2)}`;
 

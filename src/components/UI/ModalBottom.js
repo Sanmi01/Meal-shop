@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import classes from './ModalBottom.module.css';
 
+// ModalBottom Component which renders a modal close to the bottom of a screen with the use of portals.
+
 const Backdrop = ({ onCloseCart }) => {
     return <div onClick={onCloseCart} className={classes.backdrop}></div>
 };

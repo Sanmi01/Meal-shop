@@ -3,6 +3,10 @@ import CartIcon from '../Cart/CartIcon';
 import CartContext from '../../store/cart-context';
 import classes from './HeaderCartButton.module.css';
 
+/*HeaderCartButton Component which makes use of a useState and useEffect Hook to trigger a button highlight and also useContext Hook 
+to access data from the store 
+*/
+
 
 const HeaderCartButton = ({ onShowCart }) => {
     const [btnIsHighlighted, setBtnIsHighlighted] = useState(false);

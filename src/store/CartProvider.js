@@ -3,9 +3,16 @@ import CartContext from './cart-context';
 
 const defaultCartState = {
     items: [],
-    totalAmount: 0,
-    notification: false
+    totalAmount: 0
 };
+/** 
+* cartReducer function
+* This function allows us to get data from the cartState, use the said data and change said data.
+* @param {object} state - This is an object which contains has the cartState data
+* @param {object} action - An action object is an object that describes how to update the state. Typically, the action object would have a property type — a string describing what kind of state update the reducer must do.
+* @return {object} The object returned has the items and total amount
+*/
+
 
 const cartReducer = (state, action) => {
     if(action.type === 'ADD') {
@@ -28,8 +35,7 @@ const cartReducer = (state, action) => {
         
         return {
             items: updatedItems,
-            totalAmount: updatedTotalAmount,
-            notification: state.notification
+            totalAmount: updatedTotalAmount
         }
     }
 
@@ -52,7 +58,6 @@ const cartReducer = (state, action) => {
         return {
             items: updatedItems,
             totalAmount: updatedTotalAmount,
-            notification: state.notification
         }
     }
 
@@ -65,25 +70,22 @@ const cartReducer = (state, action) => {
         const updatedCartItems = state.items.filter(item => item.id !== action.id);
         return {
             items: updatedCartItems,
-            totalAmount: updatedTotalAmount,
-            notification: state.notification
-        }
-    }
-
-    if(action.type === 'NOTIFY') {
-        return {
-            items: state.items,
-            totalAmount: state.totalAmount,
-            notification: (!state.notification)
+            totalAmount: updatedTotalAmount
         }
     }
     return defaultCartState;
 };
 
+
+
+// This getCartItemsFromLocalStorage get the cart items data that has been set in the local storage of the web browser and if there's none, it returns an empty array.
 const getCartItemsFromLocalStorage = () => {
     const localData = localStorage.getItem('cartItems');
     return localData ? JSON.parse(localData) : [];
 }
+
+// This CartProvider Component contains a useReducer Hook which is used to access the cartState and change the data with the use of dispatch actions.
+// The component also the cartContext object 
 
 const CartProvider = (props) => {
     const [cartState, dispatchCartAction] = useReducer(cartReducer, defaultCartState, getCartItemsFromLocalStorage)
@@ -100,15 +102,11 @@ const CartProvider = (props) => {
         dispatchCartAction({type: 'DELETE', id:id})
     };
 
-    const NotifyFromCartHandler = () => {
-        dispatchCartAction({type: 'NOTIFY'})
-    };
 
 
     const cartContext = {
         items: cartState.items,
         totalAmount: cartState.totalAmount,
-        notification: cartState.notification,
         addItem: addItemToCartHandler,
         removeItem: removeItemFromCartHandler,
         deleteItem: deleteItemFromCartHandler
@@ -118,10 +116,6 @@ const CartProvider = (props) => {
      useEffect(() => {
         localStorage.setItem('cartItems', JSON.stringify(cartState))
     }, [cartState]);
-
-    useEffect(() => {
-        NotifyFromCartHandler()
-    }, [cartState.totalAmount]);
 
     return (
         <CartContext.Provider value={cartContext}>

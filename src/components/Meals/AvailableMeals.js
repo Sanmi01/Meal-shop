@@ -3,6 +3,9 @@ import Card from '../UI/Card';
 import MealItem from './MealItem';
 import classes from './AvailableMeals.module.css';
 
+//AvailableMeals Component which makes use of some dummy data to populate itself through the MealItem component and uses a Card UI component.
+
+
 const DUMMY_MEALS = [{
         id: 'm1',
         name: 'Sushi',

@@ -3,6 +3,9 @@ import MealItemForm from './MealItemForm';
 import classes from './MealItem.module.css';
 import CartContext from '../../store/cart-context';
 
+// MealItem Component which gets data from the store through the use of the useContext Hook and also makes use of a addToCartHandler function which is gotten from the store.
+// The addToCartHandler function adds an item to the cart
+
 const MealItem = ({id, name, description, price}) => {
     const cartCtx = useContext(CartContext)
     const pri = `$${price.toFixed(2)}`;

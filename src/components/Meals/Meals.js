@@ -1,7 +1,8 @@
-import React, { useContext} from 'react';
+import React from 'react';
 import MealsSummary from './MealsSummary';
 import AvailableMeals from './AvailableMeals';
-import CartContext from '../../store/cart-context';
+
+//Meals Component which is made of the MealsSummary and AvailableMeals Components
 
 const Meals = () => {
     return (

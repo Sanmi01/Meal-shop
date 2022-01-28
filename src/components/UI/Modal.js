@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import classes from './Modal.module.css';
 
+// Modal UI Component which makes use of a backdrop and an overlay to render a modal on the screen. ALso makes use of portals.
+
 const Backdrop = ({ onCloseCart }) => {
     return <div onClick={onCloseCart} className={classes.backdrop}></div>
 };

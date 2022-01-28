@@ -1,6 +1,8 @@
 import React from 'react';
 import classes from './Input.module.css';
 
+// Input UI component
+
 const Input = React.forwardRef(({label, input}, ref) => {
     return (
         <div className={classes.input}>

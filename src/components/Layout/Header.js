@@ -4,7 +4,7 @@ import mealsImage from '../../assets/meals.jpg';
 import classes from './Header.module.css';
 
 export const Header = ({ onShowCart }) => {
-
+    // Header Component which includes the header tag and the HeaderCartButton Component
     return (
         <>
             <header className={classes.header}>
