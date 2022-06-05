@@ -1,1 +1,1 @@
-## Hosted Site: https://sanmi-meal-shop.herokuapp.com/
+## Live Site: https://sanmi-meal-shop.herokuapp.com/
